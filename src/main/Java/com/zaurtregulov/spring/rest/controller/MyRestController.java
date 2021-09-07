@@ -7,6 +7,7 @@ import com.zaurtregulov.spring.rest.service.EmployeeService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @RestController
@@ -21,5 +22,11 @@ public class MyRestController {
         List<Employee> allEmployees = employeeService.getAllEmployees();
         return allEmployees;
     } 
+    
+    @GetMapping("/employees/{id}")
+   public Employee getEmployee(@PathVariable int id){
+       Employee employee = employeeService.getEmployee(id);
+       return employee;
+   }
     
 }
