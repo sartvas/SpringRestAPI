@@ -8,6 +8,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @RestController
@@ -27,6 +29,13 @@ public class MyRestController {
    public Employee getEmployee(@PathVariable int id){
        Employee employee = employeeService.getEmployee(id);
        return employee;
+   }
+   
+    @PostMapping("/employees")
+   public Employee addNewEmployee(@RequestBody Employee employee){
+       employeeService.saveEmployee(employee);
+       return employee;
+               
    }
     
 }
